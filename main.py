@@ -2,7 +2,7 @@ import logging
 import sched
 import time
 from datetime import datetime, timedelta
-from typing import List, Iterable, Dict, Optional
+from typing import List, Iterable, Optional
 
 import requests
 from gcsa.google_calendar import GoogleCalendar
@@ -10,6 +10,7 @@ from gcsa.google_calendar import GoogleCalendar
 from common import init_calendar, load_global_config, GlobalConfig
 from common.event import EventWithId
 from common.module import Module
+from module.league_of_graphs import LeagueOfGraphs
 from module.wakatime import Wakatime
 
 
@@ -95,6 +96,7 @@ def main(countdown: int = -1, interval: Optional[float] = None):
     # Loading modules and calendar(s)
     modules = [
         Wakatime(),
+        LeagueOfGraphs(),
     ]
     gc = init_calendar()
     global_config = load_global_config()

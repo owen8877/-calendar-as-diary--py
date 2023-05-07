@@ -14,9 +14,14 @@ def test_main():
 
 
 @pytest.mark.local
+def test_refresh_token():
+    init_calendar()
+
+
+@pytest.mark.local
 def test_integration():
     global_config = load_global_config()
-    gc = init_calendar()
+    gc = init_calendar(test=True)
     test_calendar_name = 'Test purpose only'
 
     # First clear any calendar of the same name

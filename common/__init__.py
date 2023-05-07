@@ -16,8 +16,10 @@ def get_json_parser() -> JsonParser:
     return parser
 
 
-def init_calendar() -> GoogleCalendar:
-    return GoogleCalendar(credentials_path='config/client_secret.json', token_path='config/token.pickle')
+def init_calendar(test: bool=False) -> GoogleCalendar:
+    return GoogleCalendar(credentials_path='config/client_secret.json',
+                          token_path='config/' + ('test' if test else '') + 'token.pickle',
+                          authentication_flow_port=14789)
 
 
 @dataclass
