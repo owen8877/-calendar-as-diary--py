@@ -41,5 +41,5 @@ then
     # source ~/.bashrc
     # micromamba activate calendar-as-diary
     # micromamba update -f env.yml
-    /home/xdroid/.npm-packages/bin/pm2 restart ecosystem.config.js -i 0
+    /home/xdroid/.npm-packages/bin/pm2 restart ecosystem.config.js
 fi
