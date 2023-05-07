@@ -1,0 +1,4 @@
+calendar_id: '@group.calendar.google.com'
+url: 'https://wakatime.com/api/v1/users/current/durations?date={date}'
+headers:
+  authorization: 'Basic [base64]'
