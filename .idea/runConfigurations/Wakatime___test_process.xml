@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="pytest for test_wakatime.test_process" type="tests" factoryName="py.test" nameIsGenerated="true">
+  <configuration default="false" name="Wakatime | test_process" type="tests" factoryName="py.test">
     <module name="calendar-as-diary-py" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />

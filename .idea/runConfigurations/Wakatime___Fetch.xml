@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="pytest for test_main.test_fetch_data" type="tests" factoryName="py.test" nameIsGenerated="true">
+  <configuration default="false" name="Wakatime | Fetch" type="tests" factoryName="py.test">
     <module name="calendar-as-diary-py" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
@@ -12,7 +12,7 @@
     <option name="_new_keywords" value="&quot;&quot;" />
     <option name="_new_parameters" value="&quot;&quot;" />
     <option name="_new_additionalArguments" value="&quot;&quot;" />
-    <option name="_new_target" value="&quot;test_main.test_fetch_data&quot;" />
+    <option name="_new_target" value="&quot;test_wakatime.test_fetch&quot;" />
     <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     <method v="2" />
   </configuration>

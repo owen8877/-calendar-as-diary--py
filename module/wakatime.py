@@ -16,6 +16,10 @@ class Item:
     time: float = field()
     duration: float = field()
     color: str = field()
+    is_external: Optional[bool] = field(default=False)
+    external_id: Optional[str] = field(default='')
+    provider: Optional[str] = field(default='')
+    meta: Optional[str] = field(default='')
 
     def id(self):
         return f'{ID}|{self.time}'
@@ -23,8 +27,8 @@ class Item:
 
 @dataclass
 class JsonResponse:
-    start: datetime = field()
-    end: datetime = field()
+    start_str: str = field(metadata={'name': 'start'})
+    end_str: str = field(metadata={'name': 'end'})
     timezone: str = field()
     data: List[Item] = field(default_factory=list)
     branches: List[str] = field(default_factory=list)
@@ -48,8 +52,8 @@ class Wakatime(Module):
             summary=f'[Wakatime] {item.project}',
             description=f'[link] https://wakatime.com/projects/{item.project}',
             duration=Duration(
-                start=(created_at := tz.localize(datetime.utcfromtimestamp(item.time))),
+                start=(created_at := datetime.fromtimestamp(item.time, tz)),
                 end=created_at + timedelta(seconds=item.duration),
             ),
             id=item.id(),
-        ) for item in json_response.data]
+        ) for item in json_response.data if not item.is_external]

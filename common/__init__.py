@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict
+from zoneinfo import ZoneInfo
 
 import pytz
 import yaml
@@ -16,7 +17,7 @@ def get_json_parser() -> JsonParser:
     return parser
 
 
-def init_calendar(test: bool=False) -> GoogleCalendar:
+def init_calendar(test: bool = False) -> GoogleCalendar:
     return GoogleCalendar(credentials_path='config/client_secret.json',
                           token_path='config/' + ('test' if test else '') + 'token.pickle',
                           authentication_flow_port=14789)
@@ -34,7 +35,7 @@ def load_global_config() -> GlobalConfig:
     gconfig = GlobalConfig()
     for k, v in econfig.items():
         if k == 'timezone':
-            v = pytz.timezone(v)
+            v = ZoneInfo(v)
         gconfig.__setattr__(k, v)
     return gconfig
 

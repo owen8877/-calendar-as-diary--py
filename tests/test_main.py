@@ -53,24 +53,3 @@ def test_integration():
 
     for event in events:
         gc.add_event(event.to_event(), calendar_id=test_calendar_id)
-
-
-def test_fetch_data():
-    module = LeagueOfGraphs()
-    response = fetch_data(module)
-    # print(response)
-
-
-def test_fetch_and_process_data():
-    global_config = load_global_config()
-    module = LeagueOfGraphs()
-    response = fetch_data(module)
-    # print(response)
-
-    detail_response = make_detail(module, response)
-    # print(detail_response)
-
-    events = filter_events_to_be_posted(module, detail_response, global_config)
-    print(events)
-
-    module.dump()
