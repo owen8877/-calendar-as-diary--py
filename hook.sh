@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Functions
 die() { echo "error: $@" 1>&2 ; exit 1; }
@@ -30,17 +30,16 @@ then
 fi
 
 # Extract values
-action=$(echo $payload | jq .action -r)
-[ $? != 0 -o "$action" = "null" ] && die "unable to extract 'action' from JSON payload"
+# action=$(echo $payload | jq .action -r)
+# [ $? != 0 -o "$action" = "null" ] && die "unable to extract 'action' from JSON payload"
 
 # Do something with the payload:
-# Here create a simple notification when an issue has been published
-if [ "$action" = "push" ]
+if [ "$x_github_event" = "push" ]
 then
     cd /home/xdroid/calendar-as-diary-py/
     git reset HEAD --hard && git pull -f
-    source ~/.bashrc
-    micromamba activate calendar-as-diary
-    micromamba update -f env.yml
-    pm2 restart ecosystem.config.js
+    # source ~/.bashrc
+    # micromamba activate calendar-as-diary
+    # micromamba update -f env.yml
+    /home/xdroid/.npm-packages/bin/pm2 restart ecosystem.config.js
 fi
